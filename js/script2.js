@@ -14,43 +14,59 @@ function computerPlay(){
     
     if (playerSelection == "Rock"){
       if (computerSelection == "Rock") {
-        return "Tie Game...Rock"
+        result.textContent = "Tie! You both chose " + computerSelection + ".";
+        container.appendChild(result);
         }
       else if (computerSelection == "Paper") {
         computerScore++;
-        return "You Lose! Paper beats Rock"
+        scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
+        result.textContent = "You lose!  Paper beats rock!";
+        container.appendChild(result);
         }
       else {
       playerScore++;
-      return "You Win! Rock beats Scissors"
+      scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
+      result.textContent = "You win!  Rock beats scissors";
+      container.appendChild(result);
       }
     }
     else if (playerSelection == "Scissors"){
       if (computerSelection == "Scissors") {
-        return "Tie Game...Scissors"
+        result.textContent = "Tie! You both chose " + computerSelection + ".";
+        container.appendChild(result);
         }
       else if (computerSelection == "Rock") {
         computerScore++;
-        return "You Lose! Rock beats Scissors"
+        scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
+        result.textContent = "You lose!  Rock beats scissors!";
+        container.appendChild(result);
         }
       else {
       playerScore++;
-      return "You Win! Scissors beat Paper"
+      scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
+      result.textContent = "You win!  Scissors beats paper";
+      container.appendChild(result);
       }
     }
     else {
       if (computerSelection == "Paper") {
-        return "Tie Game...Paper"
+        result.textContent = "Tie! You both chose " + computerSelection + ".";
+        container.appendChild(result);
         }
       else if (computerSelection == "Scissors") {
         computerScore++;
-        return "You Lose! Scissors beat Paper"
+        scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
+        result.textContent = "You lose!  Scissors beat paper!";
+        container.appendChild(result);
         }
       else {
       playerScore++;
-      return "You Win! Paper beat Rock"
+      scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
+      result.textContent = "You win!  Paper beats rock";
+      container.appendChild(result);
       }
     }
+    checkScore()
   }
 
   let playerChoice;
@@ -67,5 +83,16 @@ function computerPlay(){
 
 const container = document.querySelector(".container");
 const scoreboard = document.createElement("div");
+const gameOver = document.createElement("div");
 scoreboard.textContent = `Player score: ${playerScore}; Computer score: ${computerScore}`;
 container.appendChild(scoreboard);
+
+function checkScore() {
+  if (playerScore >= 5) {
+    alert("Game Over. You win the game")
+  }
+
+  if (computerScore >= 5) {
+    alert("Game Over. You lose the game")
+  }
+}
